@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-var stopServer = require("./stopServer");
+var server = require("./configServer");
 var configExpress = require("./configExpress");
 
 var connectMysql = function() {
@@ -7,13 +7,13 @@ var connectMysql = function() {
         connectionLimit: 100,
         host: 'localhost',
         user: 'root',
-        password: 'root',
+        password: '',
         database: 'rest_post',
         debug: false
     });
     pool.getConnection(function(err, connection){
         if (err) {
-            stopServer.stopServer(err);
+            server.stopServer(err);
         } else {
             configExpress.configExpress(connection);
         }

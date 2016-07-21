@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var md5 = require("MD5");
 var app = express();
-var startServer = require("./startServer");
+var server = require("./configServer");
 var routes = require("../routes/routes");
 
 var configExpress = function (connection) {
@@ -11,7 +11,7 @@ var configExpress = function (connection) {
     var router = express.Router();
     app.use('/api', router);
     var rest = routes.routesHandler(router, connection, md5());
-    startServer.startServer();
+    server.startServer();
 };
 
 module.exports.configExpress = configExpress;
