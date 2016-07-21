@@ -1,10 +1,16 @@
-var mysql = require("mysql");
+//var mysql = require("mysql");
 
-var routesHandler = function(router, connection, md5) {
+function Router(router, connection, md5) {
+    var self = this;
+    self.routesHandler(router, connection, md5);
+}
+
+Router.prototype.routesHandler = function(router, connection, md5) {
 
     router.get("/", function(req, res) {
-        res.redirect("/users");
+        res.json({"Error": false, "status": 200});
     });
+
     router.post("/users", function(req, res) {
 
     });
@@ -37,6 +43,10 @@ var routesHandler = function(router, connection, md5) {
 
     });
 
+    router.get("/posts/:category_id", function(req, res) {
+
+    });
+
     router.post("/posts", function(req, res) {
 
     });
@@ -49,6 +59,22 @@ var routesHandler = function(router, connection, md5) {
 
     });
 
+    router.get("/categories", function(req, res) {
+
+    });
+
+    router.post("/categories", function(req, res) {
+
+    });
+
+    router.put("/categories", function(req, res) {
+
+    });
+
+    router.delete("/categories/:category_id", function(req, res) {
+
+    });
+
 };
 
-module.exports.routesHandler = routesHandler;
+module.exports = Router;
